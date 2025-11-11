@@ -1,45 +1,50 @@
 #include <stdio.h>
 
 int main() {
-    int jumlah_pengukuran;
-    double suhu;
-    int semua_aman = 1;  // flag untuk menandai apakah semua suhu aman
+    int many;
+    double temp;
+    int aman = 1; 
     
     printf("=== PROGRAM PEMANTAUAN SUHU MESIN ===\n");
     
-    // Minta input jumlah pengukuran
+    // How many do we need to check it chief?
     printf("Masukkan jumlah pengukuran yang akan dilakukan: ");
-    scanf("%d", &jumlah_pengukuran);
+    scanf("%d", &many);
     
     printf("\n=== MULAI PEMANTAUAN ===\n");
     
-    // Loop untuk setiap pengukuran
-    for (int i = 1; i <= jumlah_pengukuran; i++) {
-        printf("Pengukuran ke-%d \n", i);
-        printf("Masukkan suhu mesin: ");
-        scanf("%lf", &suhu);
+    // Here goes nothing
+    for (int i = 1; i <= many; i++) {
+        while (1) { // stay here until input valid
+            printf("Pengukuran ke-%d \n", i);
+            printf("Masukkan suhu mesin: ");
+            scanf("%lf", &temp);
+            
+            if (temp < 0) {
+                printf("Data tidak valid! Mesin tidak mungkin dingin.\n");
+                printf("Silakan input ulang.\n\n");
+                continue; // you stuck in here boi, until you gave me correct input
+            }
+
+            break; // okay fine, you can go
         
-        // Cek jika suhu < 0°C (data tidak valid)
-        if (suhu < 0) {
-            printf("Data tidak valid! Suhu tidak boleh negatif.\n\n");
-            continue;  // Lewati iterasi ini
-        }
-        
-        // Cek jika suhu ≥ 100°C (berbahaya)
-        if (suhu >= 100) {
+        // Hot hot hot hot!
+        if (temp >= 100) {
             printf("Suhu berbahaya! Mesin dimatikan.\n");
-            semua_aman = 0;  // Set flag bahwa ada suhu berbahaya
-            break;  // Hentikan perulangan
+            aman = 0;  // the red flag if it's too hot
+            break;  // stop the engine, or should i say stop the program
         }
         
-        // Jika suhu normal (0 ≤ suhu < 100)
-        printf("Suhu normal: %.2lf°C\n\n", suhu);
+        // Everything is normal, boring
+        printf("Suhu normal: %.2lf°C\n\n", temp);
     }
     
-    // Tampilkan pesan akhir berdasarkan kondisi
-    if (semua_aman) {
+}
+ // our labor is done, good job people
+    if (aman) {
         printf("Pemantauan selesai, semua suhu aman.\n");
     }
-    
-    return 0;
+
+return 0;
+
 }

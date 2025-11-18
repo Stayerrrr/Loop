@@ -16,7 +16,7 @@ int main() {
     // Here goes nothing
     for (int i = 1; i <= many; i++) {
         while (1) { // stay here until input valid
-            printf("Pengukuran ke-%d \n", i);
+            printf("Pengukuran ke-%d \n", i);   
             printf("Masukkan suhu mesin: ");
             scanf("%lf", &temp);
             
